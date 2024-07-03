@@ -19,6 +19,6 @@ msg[{
     },
   ],
 }] {
-  input.header["X-GitHub-Event"] == "issues"
+  input.header["X-Github-Event"] == "issues"
   input.body.action == "opened"
 }
