@@ -8,6 +8,26 @@ steps:
       - -t
       - "asia-northeast1-docker.pkg.dev/mztn-compute/container-images/nounify:$COMMIT_SHA"
       - cloud-run/nounify/
+  - id: "deploy"
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: gcloud
+    args:
+      [
+        "beta",
+        "run",
+        "deploy",
+        "nounify",
+        "--project=mztn-nounify",
+        "--image=asia-northeast1-docker.pkg.dev/mztn-compute/container-images/nounify:$COMMIT_SHA",
+        "--region=asia-northeast1",
+        "--ingress=all",
+        "--memory=2Gi",
+        "--set-secrets",
+        "NOUNIFY_GITHUB_SECRET=projects/75418226798/secrets/NOUNIFY_GITHUB_SECRET:latest,NOUNIFY_SLACK_OAUTH_TOKEN=projects/75418226798/secrets/NOUNIFY_SLACK_OAUTH_TOKEN:latest",
+        "--args",
+        "serve",
+        "--service-account=nounify@mztn-compute.iam.gserviceaccount.com",
+      ]
 images:
   - "asia-northeast1-docker.pkg.dev/mztn-compute/container-images/nounify:$COMMIT_SHA"
 options:
