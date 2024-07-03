@@ -17,7 +17,7 @@ steps:
         "run",
         "deploy",
         "nounify",
-        "--project=mztn-nounify",
+        "--project=mztn-compute",
         "--image=asia-northeast1-docker.pkg.dev/mztn-compute/container-images/nounify:$COMMIT_SHA",
         "--region=asia-northeast1",
         "--ingress=all",
