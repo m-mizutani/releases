@@ -8,6 +8,11 @@ steps:
       - -t
       - "asia-northeast1-docker.pkg.dev/mztn-compute/container-images/nounify:$COMMIT_SHA"
       - cloud-run/nounify/
+  - id: "push"
+    name: "gcr.io/cloud-builders/docker"
+    args:
+      - push
+      - "asia-northeast1-docker.pkg.dev/mztn-compute/container-images/nounify:$COMMIT_SHA"
   - id: "deploy"
     name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     entrypoint: gcloud
