@@ -9,4 +9,3 @@ ENV NOUNIFY_LOG_LEVEL=debug
 EXPOSE 8080
 
 ENTRYPOINT ["/nounify", "serve"]
-
