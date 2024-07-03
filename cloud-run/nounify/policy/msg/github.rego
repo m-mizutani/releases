@@ -21,4 +21,7 @@ msg[{
 }] {
   input.header["X-Github-Event"] == "issues"
   input.body.action == "opened"
+
+  # Ignore myself
+  input.body.issue.user.login != "m-mizutani"
 }
