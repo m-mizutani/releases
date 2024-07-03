@@ -1,8 +1,8 @@
-FROM ghcr.io/m-mizutani/nounify:52469c06461b83ce6ac22fbed8a7e4e484cf250f
+FROM ghcr.io/m-mizutani/nounify:1cc45c1fd44e1c8f623f7560737ab5b7462e8ca2
 
 COPY policy /policy
 
-ENV NOUNIFY_POLICY_FILE=/policy
+ENV NOUNIFY_POLICY=/policy
 ENV NOUNIFY_ADDR=0.0.0.0:8080
 ENV NOUNIFY_LOG_FORMAT=json
 ENV NOUNIFY_LOG_LEVEL=debug
