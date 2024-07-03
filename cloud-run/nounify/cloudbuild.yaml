@@ -9,7 +9,7 @@ steps:
       - "asia-northeast1-docker.pkg.dev/mztn-compute/container-images/nounify:$COMMIT_SHA"
       - cloud-run/nounify/
   - id: "deploy"
-  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     entrypoint: gcloud
     args:
       [
