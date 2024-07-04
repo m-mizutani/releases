@@ -51,3 +51,25 @@ msg[{
   # Ignore myself
   input.body.pull_request.user.login != "m-mizutani"
 }
+
+msg[{
+  "channel": "github-notify",
+  "color": "#2EB67D",
+  "emoji": ":star:",
+  "title": "Got star",
+  "fields": [
+    {
+      "name": "Repository",
+      "value": input.body.repository.full_name,
+      "link": input.body.repository.html_url,
+    },
+    {
+      "name": "User",
+      "value": input.body.sender.login,
+      "link": input.body.sender.html_url,
+    },
+  ],
+}] {
+  input.header["X-Github-Event"] == "star"
+  input.body.action == "created"
+}
