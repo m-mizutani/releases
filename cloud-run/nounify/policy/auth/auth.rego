@@ -1,6 +1,6 @@
 package auth
 
 allow {
-    input.path == "/msg/github"
-    input.github.install_id == 52336960
+    startswith(input.path, "/msg/github")
+    input.github.app.install_id == 52336960
 }
