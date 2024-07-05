@@ -1,4 +1,4 @@
-FROM ghcr.io/m-mizutani/nounify:1cc45c1fd44e1c8f623f7560737ab5b7462e8ca2
+FROM ghcr.io/m-mizutani/nounify:3111a276a825840b1dc77364248e78a6bafab21c
 
 COPY policy /policy
 
@@ -6,6 +6,7 @@ ENV NOUNIFY_POLICY=/policy
 ENV NOUNIFY_ADDR=0.0.0.0:8080
 ENV NOUNIFY_LOG_FORMAT=json
 ENV NOUNIFY_LOG_LEVEL=debug
+ENV NOUNIFY_GOOGLE_ID_TOKEN=1
 EXPOSE 8080
 
 ENTRYPOINT ["/nounify", "serve"]
