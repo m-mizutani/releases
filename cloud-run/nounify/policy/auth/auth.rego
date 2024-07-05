@@ -2,5 +2,10 @@ package auth
 
 allow {
     startswith(input.path, "/msg/github")
-    input.github.app.install_id == 52336960
+    input.auth.github.app.install_id == 933446
+}
+
+allow {
+    startswith(input.path, "/msg/google")
+    input.auth.google.email == "nounify-pusher@mztn-compute.iam.gserviceaccount.com"
 }
