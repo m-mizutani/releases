@@ -1,4 +1,4 @@
-FROM ghcr.io/m-mizutani/nounify:cf758e07f03047562557107ac26b873ef018eeac
+FROM ghcr.io/m-mizutani/nounify:bde9b2191d78c985e267ce3770503d61bb6665ac
 
 COPY policy /policy
 
