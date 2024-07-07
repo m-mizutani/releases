@@ -1,4 +1,4 @@
-package msg.github
+package msg.github.app
 
 msg[{
   "channel": "github-notify",

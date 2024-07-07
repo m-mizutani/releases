@@ -1,4 +1,4 @@
-package msg.github
+package msg.github.app
 
 test_github_issue_open {
 	resp := msg with input as {
