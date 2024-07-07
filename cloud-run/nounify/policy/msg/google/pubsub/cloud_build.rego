@@ -22,6 +22,10 @@ msg[{
     image := m.images[_]
 
     r := {
+        "QUEUED": {
+            "color": "#FFA500",
+            "emoji": ":hourglass_flowing_sand:",
+        },
         "SUCCESS": {
             "color": "#2EB67D",
             "emoji": ":white_check_mark:",
