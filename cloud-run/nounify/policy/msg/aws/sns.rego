@@ -5,11 +5,10 @@ msg[{
   "color": "#FF9900",
   "emoji": ":incoming_envelope:",
   "title": "New subscription",
-  "body": input.body.Message,
   "fields": [
     {
       "name": "Topic",
-      "value": sprintf("`%s`", input.body.TopicArn),
+      "value": sprintf("`%s`", [input.body.TopicArn]),
     },
   ],
 }] {
@@ -29,7 +28,7 @@ msg[{
   "fields": [
     {
       "name": "Topic",
-      "value": sprintf("`%s`", input.body.TopicArn),
+      "value": sprintf("`%s`", [input.body.TopicArn]),
     },
   ],
 }] {

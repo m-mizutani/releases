@@ -1,0 +1,46 @@
+{
+  "header": {
+    "X-Cloud-Trace-Context": "0516a14a97ddb3695399ac4d0174d6a2/5469624750744632987;o=1",
+    "Accept-Encoding": "gzip,deflate",
+    "User-Agent": "Amazon Simple Notification Service Agent",
+    "X-Forwarded-Proto": "https",
+    "Content-Type": "text/plain; charset=UTF-8",
+    "Traceparent": "00-0516a14a97ddb3695399ac4d0174d6a2-4be802bb42d17e9b-01",
+    "X-Forwarded-For": "136.18.20.58",
+    "X-Amz-Sns-Message-Type": "Notification",
+    "X-Amz-Sns-Topic-Arn": "arn:aws:sns:ap-northeast-1:783957204773:nounify-test",
+    "Content-Length": "963",
+    "X-Amz-Sns-Subscription-Arn": "arn:aws:sns:ap-northeast-1:783957204773:nounify-test:b34b0998-5c36-449d-802e-9cba6953f9e6",
+    "Forwarded": "for=\"136.18.20.58\";proto=https",
+    "X-Amz-Sns-Message-Id": "16f2b559-c42b-54fc-b354-ea5de1fffd12"
+  },
+  "path": "/msg/aws/sns",
+  "body": {
+    "Timestamp": "2024-07-07T05:11:48.324Z",
+    "SigningCertURL": "https://sns.ap-northeast-1.amazonaws.com/SimpleNotificationService-60eadc530605d63b8e62a523676ef735.pem",
+    "Subject": "test",
+    "UnsubscribeURL": "https://sns.ap-northeast-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:ap-northeast-1:783957204773:nounify-test:b34b0998-5c36-449d-802e-9cba6953f9e6",
+    "MessageId": "16f2b559-c42b-54fc-b354-ea5de1fffd12",
+    "SignatureVersion": "1",
+    "Signature": "WtP364hKcoNr10uYoEFkTF4VpIf9Gdc5K5YbajIA1M3iTvo9w/ZvqNBInYWS2BRou9IhVkdp0RuRvYmuMqY9cutj44M43DEKTcDYu7cvXSTdoQ4j1n3Sqj7liyqMyHbzy0cDORPLU4GDaNw+ApBnYgYjtFkku2JpsMxe6InKBVGw79wVHSScbnFQ2w+gTPrpR9ih7eaXunl5BPd5gfN7DffE1Z+GduZbJtZ8epc8W7niLOrlQEsEfHqi2dhc0kHjCFZiEaS9NUWgeBwtqqDTxkulYPGaKgBKW3kh2mwzrEJpR/0VOtf9ia4M0w76KWfhpL2K9f/iC/lTRMw0Zju5uQ==",
+    "Message": "おらっ！",
+    "Type": "Notification",
+    "TopicArn": "arn:aws:sns:ap-northeast-1:783957204773:nounify-test"
+  },
+  "method": "POST",
+  "auth": {
+    "github": {
+      "app": null,
+      "action": {}
+    },
+    "google": {},
+    "aws": {
+      "sns": {
+        "MessageId": "16f2b559-c42b-54fc-b354-ea5de1fffd12",
+        "Type": "Notification",
+        "TopicArn": "arn:aws:sns:ap-northeast-1:783957204773:nounify-test",
+        "Timestamp": "2024-07-07T05:11:48.324Z"
+      }
+    }
+  }
+}
