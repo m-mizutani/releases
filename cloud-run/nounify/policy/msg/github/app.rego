@@ -1,55 +1,36 @@
 package msg.github.app
 
-msg[{
-  "channel": "github-notify",
-  "color": "#2EB67D",
-  "emoji": ":octopus:",
-  "title": "New issue opened",
-  "body": input.body.issue.body,
-  "fields": [
-    {
-      "name": "Author",
-      "value": input.body.issue.user.login,
-      "link": input.body.issue.user.html_url,
-    },
-    {
-      "name": "Issue",
-      "value": sprintf("#%d: %s", [input.body.issue.number, input.body.issue.title]),
-      "link": input.body.issue.html_url,
-    },
-  ],
-}] {
-  input.header["X-Github-Event"] == "issues"
-  input.body.action == "opened"
+github_event := input.header["X-Github-Event"]
 
-  # Ignore myself
-  input.body.issue.user.login != "m-mizutani"
+issue_entity := input.body.issue {
+  github_event == "issues"
+} else := input.body.pull_request {
+  github_event == "pull_request"
 }
 
 msg[{
   "channel": "github-notify",
   "color": "#2EB67D",
   "emoji": ":octopus:",
-  "title": "New PR opened",
-  "body": input.body.pull_request.body,
+  "title": sprintf("New %s opened", [github_event]),
+  "body": issue_entity.body,
   "fields": [
     {
       "name": "Author",
-      "value": input.body.pull_request.user.login,
-      "link": input.body.pull_request.user.html_url,
+      "value": issue_entity.user.login,
+      "link": issue_entity.user.html_url,
     },
     {
-      "name": "Issue",
-      "value": sprintf("#%d: %s", [input.body.pull_request.number, input.body.pull_request.title]),
-      "link": input.body.pull_request.html_url,
+      "name": "Link",
+      "value": sprintf("#%d: %s", [issue_entity.number, issue_entity.title]),
+      "link": issue_entity.html_url,
     },
   ],
 }] {
-  input.header["X-Github-Event"] == "pull_request"
   input.body.action == "opened"
 
   # Ignore myself
-  input.body.pull_request.user.login != "m-mizutani"
+  issue_entity.user.login != "m-mizutani"
 }
 
 msg[{
@@ -70,6 +51,6 @@ msg[{
     },
   ],
 }] {
-  input.header["X-Github-Event"] == "star"
+  github_event == "star"
   input.body.action == "created"
 }
