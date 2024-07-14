@@ -1,5 +1,8 @@
 package msg.github.app
 
+import future.keywords.contains
+import future.keywords.if
+
 github_event := input.header["X-Github-Event"]
 
 issue_entity := input.body.issue {
@@ -8,7 +11,13 @@ issue_entity := input.body.issue {
   github_event == "pull_request"
 }
 
-msg[{
+msg contains m if {
+  input.body.action == "opened"
+
+  # Ignore myself
+  issue_entity.user.login != "m-mizutani"
+
+  m := {
   "channel": "github-notify",
   "color": "#2EB67D",
   "emoji": ":octopus:",
@@ -26,14 +35,10 @@ msg[{
       "link": issue_entity.html_url,
     },
   ],
-}] {
-  input.body.action == "opened"
-
-  # Ignore myself
-  issue_entity.user.login != "m-mizutani"
+}
 }
 
-msg[{
+msg contains {
   "channel": "github-notify",
   "color": "#2EB67D",
   "emoji": ":star:",
@@ -50,7 +55,7 @@ msg[{
       "link": input.body.sender.html_url,
     },
   ],
-}] {
+} if {
   github_event == "star"
   input.body.action == "created"
 }
