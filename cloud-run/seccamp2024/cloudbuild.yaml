@@ -27,6 +27,7 @@ steps:
         "--region=asia-northeast1",
         "--ingress=all",
         "--memory=2Gi",
+        "--port=8000",
         "--args",
         "serve",
         "--service-account=seccamp2024@mztn-compute.iam.gserviceaccount.com",
