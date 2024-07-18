@@ -14,3 +14,8 @@ allow {
 	startswith(input.path, "/msg/aws")
 	startswith(input.auth.aws.sns.TopicArn, "arn:aws:sns:ap-northeast-1:783957204773:")
 }
+
+allow {
+	startswith(input.path, "/msg/seccamp2024")
+	input.auth.google.email == "notifier@mztn-seccamp-2024.iam.gserviceaccount.com"
+}
