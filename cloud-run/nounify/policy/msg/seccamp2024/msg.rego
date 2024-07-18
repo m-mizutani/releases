@@ -3,8 +3,8 @@ package msg.seccamp2024
 msg[{
 	"channel": "notify-seccamp2024",
 	"title": "Alert detected",
-    "body": input.body,
+    "body": raw,
 	"emoji": ":exclamation:",
 }] {
-    input.body
+	raw := base64.decode(input.body.message.data)
 }
