@@ -29,11 +29,9 @@ steps:
         "--memory=2Gi",
         "--args",
         "serve",
-        "--set-env-vars",
-        "CLOUD_STORAGE_BUCKET=mztn-seccamp2024-common,CLOUD_STORAGE_OBJECT=test.logs",
-        "--service-account=nounify@mztn-compute.iam.gserviceaccount.com",
+        "--service-account=seccamp2024@mztn-compute.iam.gserviceaccount.com",
       ]
 images:
-  - "asia-northeast1-docker.pkg.dev/mztn-compute/container-images/nounify:$COMMIT_SHA"
+  - "asia-northeast1-docker.pkg.dev/mztn-compute/container-images/seccamp2024:$COMMIT_SHA"
 options:
   logging: CLOUD_LOGGING_ONLY
