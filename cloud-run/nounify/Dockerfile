@@ -2,7 +2,7 @@ FROM ghcr.io/m-mizutani/nounify:ac9b5277b101b6c03d62c0212eb4bdc1c9bd76bf
 
 COPY policy /policy
 
-ENV NOUNIFY_POLICY=/policy
+ENV NOUNIFY_RULE=/policy
 ENV NOUNIFY_ADDR=0.0.0.0:8080
 ENV NOUNIFY_LOG_FORMAT=json
 ENV NOUNIFY_LOG_LEVEL=debug
