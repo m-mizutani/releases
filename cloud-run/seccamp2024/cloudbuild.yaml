@@ -1,0 +1,39 @@
+steps:
+  - id: "build"
+    name: "gcr.io/cloud-builders/docker"
+    args:
+      - build
+      - -f
+      - cloud-run/seccamp2024/Dockerfile
+      - -t
+      - "asia-northeast1-docker.pkg.dev/mztn-compute/container-images/seccamp2024:$COMMIT_SHA"
+      - cloud-run/seccamp2024/
+  - id: "push"
+    name: "gcr.io/cloud-builders/docker"
+    args:
+      - push
+      - "asia-northeast1-docker.pkg.dev/mztn-compute/container-images/seccamp2024:$COMMIT_SHA"
+  - id: "deploy"
+    name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: gcloud
+    args:
+      [
+        "beta",
+        "run",
+        "deploy",
+        "seccamp2024",
+        "--project=mztn-compute",
+        "--image=asia-northeast1-docker.pkg.dev/mztn-compute/container-images/seccamp2024:$COMMIT_SHA",
+        "--region=asia-northeast1",
+        "--ingress=all",
+        "--memory=2Gi",
+        "--args",
+        "serve",
+        "--set-env-vars",
+        "CLOUD_STORAGE_BUCKET=mztn-seccamp2024-common,CLOUD_STORAGE_OBJECT=test.logs",
+        "--service-account=nounify@mztn-compute.iam.gserviceaccount.com",
+      ]
+images:
+  - "asia-northeast1-docker.pkg.dev/mztn-compute/container-images/nounify:$COMMIT_SHA"
+options:
+  logging: CLOUD_LOGGING_ONLY
