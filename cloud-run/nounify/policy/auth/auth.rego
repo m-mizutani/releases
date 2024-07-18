@@ -17,5 +17,5 @@ allow {
 
 allow {
 	startswith(input.path, "/msg/seccamp2024")
-	input.auth.google.email == "notifier@mztn-seccamp-2024.iam.gserviceaccount.com"
+	startswith(input.auth.google.email, "@mztn-seccamp-2024.iam.gserviceaccount.com")
 }
