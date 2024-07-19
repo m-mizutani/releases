@@ -178,8 +178,12 @@ type logQuery struct {
 func searchLogs(logs []*logRecord, q *logQuery) ([]*logRecord, *logMetadata) {
 	var results []*logRecord
 
+	now := time.Now()
 	for _, log := range logs {
 		if log.Timestamp.Before(q.begin) || log.Timestamp.After(q.end) {
+			continue
+		}
+		if log.Timestamp.After(now) {
 			continue
 		}
 
