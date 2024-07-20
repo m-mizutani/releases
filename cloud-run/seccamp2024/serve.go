@@ -158,11 +158,11 @@ func parseLogQuery(v url.Values) (*logQuery, error) {
 		}
 		q.limit = n
 	} else {
-		q.limit = 100
+		q.limit = 50
 	}
 
-	if q.limit > 1000 {
-		return nil, goerr.New("limit should be less than 1000")
+	if q.limit > 200 {
+		return nil, goerr.New("limit should be less than 200")
 	}
 
 	return &q, nil
