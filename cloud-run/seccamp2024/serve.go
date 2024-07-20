@@ -126,7 +126,7 @@ func parseLogQuery(v url.Values) (*logQuery, error) {
 		}
 		q.begin = t
 	} else {
-		q.begin = now.Add(-5 * time.Minute)
+		q.begin = now.Add(-1 * time.Minute)
 	}
 
 	if v.Get("end") != "" {
