@@ -126,6 +126,7 @@ func outputLogs(w io.Writer, size int) error {
 	}
 
 	logs = concat(logs,
+		genSuspiciousAccessLogs(base, rng, 1000),
 		genBruteForceFromSameAddrLogs(base, rng, 256),
 		genBruteForceFromSameUserLogs(base, rng, 256),
 	)
@@ -139,6 +140,30 @@ func outputLogs(w io.Writer, size int) error {
 	}
 
 	return nil
+}
+
+func genSuspiciousAccessLogs(base time.Time, rng *math_rand.Rand, size int) []*logRecord {
+	var logs []*logRecord
+	ipaddr := "198.51.100.2" // 198.51.100.0/24
+
+	for i := 0; i < size; i++ {
+		addSec := rng.Intn(86400)
+		timestamp := base.Add(time.Duration(addSec) * time.Second)
+
+		target := dummyTargets[rng.Intn(len(dummyTargets))]
+
+		logs = append(logs, &logRecord{
+			ID:        uuid.NewString(),
+			Timestamp: timestamp,
+			User:      "tina46",
+			Action:    "read",
+			Target:    target,
+			Remote:    ipaddr,
+			Success:   true,
+		})
+	}
+
+	return logs
 }
 
 func genBruteForceFromSameAddrLogs(base time.Time, rng *math_rand.Rand, size int) []*logRecord {
