@@ -17,5 +17,5 @@ allow {
 
 allow {
 	startswith(input.path, "/msg/seccamp2024")
-	startswith(input.auth.google.email, "@mztn-seccamp-2024.iam.gserviceaccount.com")
+	endswith(input.auth.google.email, "@mztn-seccamp-2024.iam.gserviceaccount.com")
 }

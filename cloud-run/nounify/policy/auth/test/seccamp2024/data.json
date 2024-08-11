@@ -1,0 +1,37 @@
+{
+  "path": "/msg/seccamp2024",
+  "header": {
+    "X-Forwarded-Proto": "https",
+    "User-Agent": "APIs-Google; (+https://developers.google.com/webmasters/APIs-Google.html)",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Content-Type": "application/json",
+    "X-Forwarded-For": "66.102.6.2",
+    "Accept": "application/json",
+    "Forwarded": "for=\"66.102.6.2\";proto=https",
+    "Traceparent": "00-d6947cad6cf086dca450423feb31e843-568312f228fe9e01-00",
+    "X-Cloud-Trace-Context": "d6947cad6cf086dca450423feb31e843/6233847140490059265",
+    "From": "noreply@google.com",
+    "Authorization": "[REDACTED]",
+    "Content-Length": "329"
+  },
+  "method": "POST",
+  "auth": {
+    "aws": {
+      "sns": null
+    },
+    "google": {
+      "email": "notifier-vermilion@mztn-seccamp-2024.iam.gserviceaccount.com",
+      "iat": 1723335308,
+      "azp": "101078618477658476532",
+      "exp": 1723338908,
+      "sub": "101078618477658476532",
+      "aud": ["https://nounify-nxgezih6la-an.a.run.app/msg/seccamp2024"],
+      "email_verified": true,
+      "iss": "https://accounts.google.com"
+    },
+    "github": {
+      "app": null,
+      "action": {}
+    }
+  }
+}
