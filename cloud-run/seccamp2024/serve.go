@@ -222,7 +222,7 @@ func downloadLogs(bucket, objectName string) ([]*logRecord, error) {
 
 	logger.Info("Downloaded logs from Cloud Storage", "bucket", bucket, "object", objectName, "count", len(logs))
 
-	now := time.Now()
+	now := time.Now().UTC()
 	for _, log := range logs {
 		ts := time.Date(
 			now.Year(), now.Month(), now.Day(),
