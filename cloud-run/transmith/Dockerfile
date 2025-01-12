@@ -1,0 +1,12 @@
+FROM ghcr.io/m-mizutani/transmith:a960067a21af5b75fddcca460e930988e114848f
+
+COPY policy /policy
+
+ENV TRANSMITH_POLICY=/policy
+ENV TRANSMITH_ADDR=0.0.0.0:8080
+ENV TRANSMITH_LOG_FORMAT=json
+ENV TRANSMITH_LOG_LEVEL=debug
+
+EXPOSE 8080
+
+ENTRYPOINT ["/transmith", "serve"]
