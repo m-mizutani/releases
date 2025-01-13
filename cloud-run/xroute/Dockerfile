@@ -1,0 +1,12 @@
+FROM ghcr.io/m-mizutani/xroute:a960067a21af5b75fddcca460e930988e114848f
+
+COPY policy /policy
+
+ENV XROUTE_POLICY=/policy
+ENV XROUTE_ADDR=0.0.0.0:8080
+ENV XROUTE_LOG_FORMAT=json
+ENV XROUTE_LOG_LEVEL=debug
+
+EXPOSE 8080
+
+ENTRYPOINT ["/xroute", "serve"]
