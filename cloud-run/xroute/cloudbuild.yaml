@@ -28,7 +28,7 @@ steps:
         "--ingress=all",
         "--memory=2Gi",
         "--set-secrets",
-        "XROUTE_SLACK_OAUTH_TOKEN=projects/75418226798/secrets/XROUTE_SLACK_OAUTH_TOKEN:latest",
+        "XROUTE_SLACK_OAUTH_TOKEN=projects/75418226798/secrets/XROUTE_SLACK_OAUTH_TOKEN:latest,XROUTE_GITHUB_WEBHOOK_SECRET=projects/75418226798/secrets/XROUTE_GITHUB_WEBHOOK_SECRET:latest",
         "--args",
         "serve",
         "--service-account=xroute@mztn-compute.iam.gserviceaccount.com",
