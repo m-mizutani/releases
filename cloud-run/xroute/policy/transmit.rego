@@ -9,7 +9,7 @@ raw_body := input.data if {
 } else := sprintf("%v", [input.data])
 
 slack contains {
-    "channel": "transmit",
+    "channel": "#xroute",
     "color": "#2EB67D",
     "emoji": ":satellite:",
     "title": "Transmit message",
