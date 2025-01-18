@@ -13,7 +13,7 @@ slack contains {
 	"color": "#2EB67D",
 	"emoji": ":satellite:",
 	"title": "Incoming message",
-	"body": substring(raw_body, 0, 100),
+	"body": substring(raw_body, 0, 512),
 	"fields": [
 		{
 			"name": "Source",
@@ -24,4 +24,10 @@ slack contains {
 			"value": input.schema,
 		},
 	]
+} if {
+	accepted
+}
+
+accepted if {
+	input.auth.github.webhook.valid
 }
