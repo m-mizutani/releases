@@ -6,6 +6,7 @@ sample_msg := {
 	"source": "github",
 	"schema": "webhook",
 	"data": data.testdata.sample,
+	"body": base64.encode(json.marshal(data.testdata.sample)),
 	"auth": {
 		"github": {
 			"webhook": {
@@ -16,18 +17,7 @@ sample_msg := {
 }
 
 test_sample if {
-	resp := slack with input as {
-		"source": "github",
-		"schema": "webhook",
-		"data": data.testdata.sample,
-		"auth": {
-			"github": {
-				"webhook": {
-					"valid": true,
-				}
-			}
-		}
-	}
+	resp := slack with input as sample_msg
 	count(resp) == 1
 	resp[x].channel == "#xroute"
 	resp[x].color == "#2EB67D"

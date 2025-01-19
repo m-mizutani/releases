@@ -1,0 +1,59 @@
+{
+  "header": {
+    "X-Forwarded-For": "20.25.192.96",
+    "Accept": "*/*",
+    "User-Agent": "node-fetch/1.0 (+https://github.com/bitinn/node-fetch)",
+    "X-Forwarded-Proto": "https",
+    "Authorization": "[REDACTED]",
+    "Traceparent": "00-d7711d96e19f0b0f343a6df848b5c29c-480f4fb976e45a8b-01",
+    "Accept-Encoding": "gzip,deflate",
+    "Content-Length": "164",
+    "Content-Type": "application/json",
+    "Forwarded": "for=\"20.25.192.96\";proto=https",
+    "X-Cloud-Trace-Context": "d7711d96e19f0b0f343a6df848b5c29c/5192456553363692171;o=1"
+  },
+  "auth": {
+    "github": {
+      "actions": {
+        "actor": "m-mizutani",
+        "job_workflow_sha": "4861589c0c7a4463d5121d3cea83af9c69caa4bf",
+        "sha": "4861589c0c7a4463d5121d3cea83af9c69caa4bf",
+        "iat": "2025-01-19T01:16:11Z",
+        "sub": "repo:secmon-lab/alertchain:ref:refs/heads/chore/notify-action",
+        "repository_owner_id": "179055316",
+        "exp": "2025-01-19T01:21:11Z",
+        "job_workflow_ref": "secmon-lab/alertchain/.github/workflows/publish.yml@refs/heads/chore/notify-action",
+        "repository": "secmon-lab/alertchain",
+        "jti": "ef85cb11-c84d-4279-bdea-30c8cb8e0ef2",
+        "workflow": "publish",
+        "runner_environment": "github-hosted",
+        "run_attempt": "1",
+        "actor_id": "605953",
+        "event_name": "push",
+        "repository_visibility": "public",
+        "head_ref": "",
+        "ref_type": "branch",
+        "workflow_ref": "secmon-lab/alertchain/.github/workflows/publish.yml@refs/heads/chore/notify-action",
+        "ref": "refs/heads/chore/notify-action",
+        "aud": ["https://github.com/secmon-lab"],
+        "repository_owner": "secmon-lab",
+        "base_ref": "",
+        "run_number": "308",
+        "ref_protected": "false",
+        "workflow_sha": "4861589c0c7a4463d5121d3cea83af9c69caa4bf",
+        "run_id": "12849038713",
+        "repository_id": "385270439",
+        "nbf": "2025-01-19T01:06:11Z",
+        "iss": "https://token.actions.githubusercontent.com"
+      },
+      "webhook": null
+    }
+  },
+  "source": "github.actions",
+  "body": "eyJjb21taXRfc2hhIjoiNDg2MTU4OWMwYzdhNDQ2M2Q1MTIxZDNjZWE4M2FmOWM2OWNhYTRiZiIsIm1lc3NhZ2UiOiJCdWlsZCBhbmQgcHVzaGVkIGltYWdlOiBnaGNyLmlvL3NlY21vbi1sYWIvYWxlcnRjaGFpbjo0ODYxNTg5YzBjN2E0NDYzZDUxMjFkM2NlYTgzYWY5YzY5Y2FhNGJmIn0=",
+  "data": {
+    "commit_sha": "4861589c0c7a4463d5121d3cea83af9c69caa4bf",
+    "message": "Build and pushed image: ghcr.io/secmon-lab/alertchain:4861589c0c7a4463d5121d3cea83af9c69caa4bf"
+  },
+  "schema": "actions"
+}
