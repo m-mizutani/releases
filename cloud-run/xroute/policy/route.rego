@@ -23,5 +23,12 @@ slack contains {
 }
 
 accepted if {
+	input.auth.github.actions.repository_owner == [
+		"m-mizutani",
+		"secmon-lab",
+	][_]
+}
+
+accepted if {
 	input.auth.github.webhook.valid
 }
