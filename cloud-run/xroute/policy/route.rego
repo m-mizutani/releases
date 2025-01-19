@@ -7,7 +7,7 @@ slack contains {
 	"color": "#2EB67D",
 	"emoji": ":satellite:",
 	"title": "Incoming message",
-	"body": substring(input.body, 0, 512),
+	"body": substring(base64.decode(input.body), 0, 512),
 	"fields": [
 		{
 			"name": "Source",
