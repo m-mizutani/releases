@@ -1,4 +1,4 @@
-FROM ghcr.io/m-mizutani/xroute:1ac733cefcad4968e7a4d5a3ca57ba01c4303951
+FROM ghcr.io/m-mizutani/xroute:4b738e0f13c0b9cc72b0aac780a360463bbd4547
 
 COPY policy /policy
 

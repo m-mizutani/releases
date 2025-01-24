@@ -7,7 +7,7 @@ slack contains {
     "channel": "#github-notify",
     "emoji": ":satellite:",
     "title": "GitHub Actions message",
-    "body": input.data.message,
+    "body": input.body.message,
     "fields": [
         {
             "name": "Repository",
@@ -29,80 +29,84 @@ slack contains {
 	][_]
 }
 
-# All GitHub Webhook Event
-slack contains {
-    "channel": "#github-notify",
-    "emoji": ":octopus:",
-    "title": sprintf("Event: %s %s", [input.schema, input.data.action]),
-    "fields": [
-        {
-            "name": "Repository",
-            "value": input.data.repository.full_name,
-            "link": input.data.repository.html_url,
-        },
-        {
-            "name": "User",
-            "value": input.data.sender.login,
-            "link": input.data.sender.html_url,
-        },
-    ],
-} if {
-    input.auth.github.webhook.valid
-}
-
 # New GitHub Issue other than myself
 slack contains {
     "channel": "#github-notify",
     "emoji": ":newspaper:",
-    "title": sprintf("New Issue: %s", [input.data.issue.title]),
-    "body": input.data.issue.body,
+    "title": sprintf("New Issue: %s", [input.body.issue.title]),
+    "body": input.body.issue.body,
     "fields": [
         {
             "name": "Repository",
-            "value": input.data.repository.full_name,
-            "link": input.data.repository.html_url,
+            "value": input.body.repository.full_name,
+            "link": input.body.repository.html_url,
         },
         {
             "name": "User",
-            "value": input.data.sender.login,
-            "link": input.data.sender.html_url,
+            "value": input.body.sender.login,
+            "link": input.body.sender.html_url,
         },
         {
             "name": "Issue",
-            "value": input.data.issue.html_url,
+            "value": input.body.issue.html_url,
         },
     ],
 } if {
     input.auth.github.webhook.valid
     input.schema == "issue"
-    input.data.sender.login != "m-mizutani"
+    input.body.action == "opened"
+    input.body.sender.login != "m-mizutani"
 }
 
 # New GitHub Pull Request other than myself
 slack contains {
     "channel": "#github-notify",
     "emoji": ":newspaper:",
-    "title": sprintf("New Pull Request: %s", [input.data.pull_request.title]),
-    "body": input.data.pull_request.body,
+    "title": sprintf("New Pull Request: %s", [input.body.pull_request.title]),
+    "body": input.body.pull_request.body,
     "fields": [
         {
             "name": "Repository",
-            "value": input.data.repository.full_name,
-            "link": input.data.repository.html_url,
+            "value": input.body.repository.full_name,
+            "link": input.body.repository.html_url,
         },
         {
             "name": "User",
-            "value": input.data.sender.login,
-            "link": input.data.sender.html_url,
+            "value": input.body.sender.login,
+            "link": input.body.sender.html_url,
         },
         {
             "name": "Pull Request",
-            "value": input.data.pull_request.number,
-            "value": input.data.pull_request.html_url,
+            "value": input.body.pull_request.number,
+            "value": input.body.pull_request.html_url,
         },
     ],
 } if {
     input.auth.github.webhook.valid
     input.schema == "pull_request"
-    input.data.sender.login != "m-mizutani"
+    input.body.action == "opened"
+    input.body.sender.login != "m-mizutani"
+}
+
+msg contains {
+	"channel": "#github-notify",
+	"color": "#2EB67D",
+	"emoji": ":star:",
+	"title": "Got star",
+	"fields": [
+		{
+			"name": "Repository",
+			"value": input.body.repository.full_name,
+			"link": input.body.repository.html_url,
+		},
+		{
+			"name": "User",
+			"value": input.body.sender.login,
+			"link": input.body.sender.html_url,
+		},
+	],
+} if {
+    input.auth.github.webhook.valid
+	input.schema == "star"
+	input.body.action == "created"
 }
