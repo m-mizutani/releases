@@ -110,3 +110,32 @@ msg contains {
 	input.schema == "star"
 	input.body.action == "created"
 }
+
+# New GitHub package publish
+slack contains {
+    "channel": "#github-notify",
+    "color": "#2EB67D",
+    "emoji": ":package:",
+    "title": "New package published",
+    "fields": [
+        {
+            "name": "Repository",
+            "value": input.body.repository.full_name,
+            "link": input.body.repository.html_url,
+        },
+        {
+            "name": "User",
+            "value": input.body.sender.login,
+            "link": input.body.sender.html_url,
+        },
+        {
+            "name": "Package",
+            "value": input.body.registry_package.package_version.package_url,
+            "link": input.body.registry_package.package_version.package_url,
+        },
+    ],
+} if {
+    input.auth.github.webhook.valid
+    input.schema == "registry_package"
+    input.body.action == "published"
+}
