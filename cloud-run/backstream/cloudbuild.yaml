@@ -1,0 +1,37 @@
+steps:
+  - id: "build"
+    name: "gcr.io/cloud-builders/docker"
+    args:
+      - build
+      - -f
+      - cloud-run/backstream/Dockerfile
+      - -t
+      - "asia-northeast1-docker.pkg.dev/mztn-compute/container-images/backstream:$COMMIT_SHA"
+      - cloud-run/backstream/
+  - id: "push"
+    name: "gcr.io/cloud-builders/docker"
+    args:
+      - push
+      - "asia-northeast1-docker.pkg.dev/mztn-compute/container-images/backstream:$COMMIT_SHA"
+  - id: "deploy"
+    name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: gcloud
+    args:
+      [
+        "beta",
+        "run",
+        "deploy",
+        "backstream",
+        "--project=mztn-compute",
+        "--image=asia-northeast1-docker.pkg.dev/mztn-compute/container-images/backstream:$COMMIT_SHA",
+        "--region=asia-northeast1",
+        "--ingress=all",
+        "--memory=2Gi",
+        "--args",
+        "serve",
+        "--service-account=backstream@mztn-compute.iam.gserviceaccount.com",
+      ]
+images:
+  - "asia-northeast1-docker.pkg.dev/mztn-compute/container-images/backstream:$COMMIT_SHA"
+options:
+  logging: CLOUD_LOGGING_ONLY
