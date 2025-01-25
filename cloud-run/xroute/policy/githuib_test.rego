@@ -17,3 +17,10 @@ test_github_webhook_registry_package if {
     count(resp) > 0
     resp[_].channel == "#github-notify"
 }
+
+test_github_webhook_star if {
+    resp := slack with input as data.testdata.github_webhook.star
+
+    count(resp) > 0
+    resp[_].channel == "#github-notify"
+}

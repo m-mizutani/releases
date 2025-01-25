@@ -88,7 +88,7 @@ slack contains {
     input.body.sender.login != "m-mizutani"
 }
 
-msg contains {
+slack contains {
 	"channel": "#github-notify",
 	"color": "#2EB67D",
 	"emoji": ":star:",
@@ -107,8 +107,8 @@ msg contains {
 	],
 } if {
     input.auth.github.webhook.valid
-	input.schema == "star"
-	input.body.action == "created"
+	input.schema == "watch"
+	input.body.action == "started"
 }
 
 # New GitHub package publish
