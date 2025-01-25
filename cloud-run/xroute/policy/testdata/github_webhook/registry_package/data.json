@@ -157,7 +157,7 @@
       "package_version": {
         "container_metadata": {
           "tag": {
-            "name": "",
+            "name": "0d589de755e66bdc3c45ad98570718bbb4f2380f6428c6ff1632d005d6a07d15",
             "digest": "sha256:0d589de755e66bdc3c45ad98570718bbb4f2380f6428c6ff1632d005d6a07d15"
           },
           "labels": {

@@ -138,4 +138,5 @@ slack contains {
     input.auth.github.webhook.valid
     input.schema == "registry_package"
     input.body.action == "published"
+    input.body.registry_package.package_version.container_metadata.tag.name != ""
 }
