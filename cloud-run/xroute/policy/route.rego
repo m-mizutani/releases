@@ -13,7 +13,7 @@ slack contains {
 	"color": "#2EB67D",
 	"emoji": ":satellite:",
 	"title": "Incoming message",
-	"body": substring(raw_body, 0, 512),
+	"body": sprintf("```\n%s```", [substring(raw_body, 0, 8192)]),
 	"fields": [
 		{
 			"name": "Source",
