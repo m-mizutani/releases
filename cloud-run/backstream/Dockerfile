@@ -1,5 +1,9 @@
-FROM ghcr.io/m-mizutani/backstream:1237af249db67c90b431f0077c4a59c5f5fecd15
+FROM ghcr.io/m-mizutani/backstream:99b9ed0e1449a251b7c98157f5efad0bb0258809
+
+COPY policy /policy
 
 ENV BACKSTREAM_ADDR="0.0.0.0:8080"
 ENV BACKSTREAM_LOG_FORMAT="json"
+ENV BACKSTREAM_POLICY=/policy
+
 EXPOSE 8080
