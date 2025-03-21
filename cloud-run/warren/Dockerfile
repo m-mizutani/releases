@@ -1,4 +1,4 @@
-FROM ghcr.io/m-mizutani/warren:99b9ed0e1449a251b7c98157f5efad0bb0258809
+FROM ghcr.io/secmon-lab/warren:99b9ed0e1449a251b7c98157f5efad0bb0258809
 
 COPY policy /policy
 
