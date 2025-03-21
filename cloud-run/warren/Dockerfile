@@ -1,0 +1,9 @@
+FROM ghcr.io/m-mizutani/warren:99b9ed0e1449a251b7c98157f5efad0bb0258809
+
+COPY policy /policy
+
+ENV WARREN_ADDR="0.0.0.0:8080"
+ENV WARREN_LOG_FORMAT="json"
+ENV WARREN_NO_CLIENT_CODE=200
+
+EXPOSE 8080

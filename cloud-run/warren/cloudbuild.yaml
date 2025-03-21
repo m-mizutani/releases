@@ -1,0 +1,39 @@
+steps:
+  - id: "build"
+    name: "gcr.io/cloud-builders/docker"
+    args:
+      - build
+      - -f
+      - cloud-run/warren/Dockerfile
+      - -t
+      - "asia-northeast1-docker.pkg.dev/mztn-compute/container-images/warren:$COMMIT_SHA"
+      - cloud-run/warren/
+  - id: "push"
+    name: "gcr.io/cloud-builders/docker"
+    args:
+      - push
+      - "asia-northeast1-docker.pkg.dev/mztn-compute/container-images/warren:$COMMIT_SHA"
+  - id: "deploy"
+    name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: gcloud
+    args:
+      [
+        "beta",
+        "run",
+        "deploy",
+        "warren",
+        "--project=mztn-compute",
+        "--image=asia-northeast1-docker.pkg.dev/mztn-compute/container-images/warren:$COMMIT_SHA",
+        "--region=asia-northeast1",
+        "--ingress=all",
+        "--memory=2Gi",
+        "--set-secrets",
+        "WARREN_SLACK_OAUTH_TOKEN=projects/75418226798/secrets/WARREN_SLACK_OAUTH_TOKEN:latest,WARREN_OTX_API_KEY=projects/75418226798/secrets/WARREN_OTX_API_KEY:latest,WARREN_URLSCAN_API_KEY=projects/75418226798/secrets/WARREN_URLSCAN_API_KEY:latest",
+        "--args",
+        "serve",
+        "--service-account=warren@mztn-compute.iam.gserviceaccount.com",
+      ]
+images:
+  - "asia-northeast1-docker.pkg.dev/mztn-compute/container-images/warren:$COMMIT_SHA"
+options:
+  logging: CLOUD_LOGGING_ONLY
