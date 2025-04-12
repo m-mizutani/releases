@@ -1,4 +1,4 @@
-FROM ghcr.io/secmon-lab/warren:a4527547575c97b3a41525d578e6e0ef5a789f04
+FROM ghcr.io/secmon-lab/warren:d7dc85fc6bbcea38c348071866f91ab62824e4a0
 
 COPY policy /policy
 
@@ -10,5 +10,6 @@ ENV WARREN_SLACK_CHANNEL_NAME="alert"
 ENV WARREN_FIRESTORE_PROJECT_ID="mztn-compute"
 ENV WARREN_FIRESTORE_DATABASE_ID="warren-v0"
 ENV WARREN_GEMINI_PROJECT_ID="mztn-compute"
+ENV WARREN_EMBEDDING_PROJECT_ID="mztn-compute"
 
 EXPOSE 8080
