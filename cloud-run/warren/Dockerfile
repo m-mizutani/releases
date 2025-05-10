@@ -1,4 +1,4 @@
-FROM ghcr.io/secmon-lab/warren:48a2ac3299018f9569cf28e1338027fffc935895
+FROM ghcr.io/secmon-lab/warren:6967d2e9951a9aa23b8041fe0b706f7041688585
 
 COPY policy /policy
 
