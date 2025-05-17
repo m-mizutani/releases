@@ -7,12 +7,7 @@ jwks_request(url) := http.send({
 	"force_cache_duration_seconds": 3600,
 }).raw_body
 
-verify_google_jwt(header) := claims if {
-	authValues := split(header, " ")
-	count(authValues) == 2
-	lower(authValues[0]) == "bearer"
-	token := authValues[1]
-
+verify_google_jwt(token) := claims if {
 	# Get JWKS of google
 	jwks := jwks_request("https://www.googleapis.com/oauth2/v3/certs")
 
@@ -25,6 +20,8 @@ verify_google_jwt(header) := claims if {
 }
 
 allow if {
-	claims := verify_google_jwt(input.header.Authorization)
-	claims[1].email == "masayoshi.mizutani@dr-ubie.com"
+	claims := verify_google_jwt(input.header.Token)
+	claims[1].sub == [
+		"110793906496191723686",
+	]
 }
