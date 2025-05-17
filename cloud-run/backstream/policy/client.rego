@@ -23,5 +23,5 @@ allow if {
 	claims := verify_google_jwt(input.header.Token)
 	claims[1].sub == [
 		"110793906496191723686",
-	]
+	][_]
 }
