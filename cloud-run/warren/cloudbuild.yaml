@@ -28,7 +28,7 @@ steps:
         "--ingress=all",
         "--memory=2Gi",
         "--set-secrets",
-        "WARREN_SLACK_OAUTH_TOKEN=projects/75418226798/secrets/WARREN_SLACK_OAUTH_TOKEN:latest,WARREN_OTX_API_KEY=projects/75418226798/secrets/WARREN_OTX_API_KEY:latest,WARREN_URLSCAN_API_KEY=projects/75418226798/secrets/WARREN_URLSCAN_API_KEY:latest,WARREN_SLACK_SIGNING_SECRET=projects/75418226798/secrets/WARREN_SLACK_SIGNING_SECRET:latest",
+        "WARREN_SLACK_OAUTH_TOKEN=projects/75418226798/secrets/WARREN_SLACK_OAUTH_TOKEN:latest,WARREN_OTX_API_KEY=projects/75418226798/secrets/WARREN_OTX_API_KEY:latest,WARREN_URLSCAN_API_KEY=projects/75418226798/secrets/WARREN_URLSCAN_API_KEY:latest,WARREN_SLACK_SIGNING_SECRET=projects/75418226798/secrets/WARREN_SLACK_SIGNING_SECRET:latest,WARREN_VT_API_KEY=projects/75418226798/secrets/WARREN_VT_API_KEY:latest,WARREN_IPDB_API_KEY=projects/75418226798/secrets/WARREN_IPDB_API_KEY:latest",
         "--args",
         "serve",
         "--service-account=warren@mztn-compute.iam.gserviceaccount.com",
